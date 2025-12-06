@@ -1,0 +1,2549 @@
+{
+  "name": "VEO3 Video Generator_1206",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      },
+      "name": "Schedule Daily 8AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        160,
+        160
+      ],
+      "id": "fc801d9b-d58b-459a-9bc8-8a49b085f58b"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.Status }}",
+              "value2": "Run"
+            }
+          ]
+        }
+      },
+      "name": "Check If Video Ready",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        640,
+        160
+      ],
+      "id": "59af0c68-48e0-4f68-942e-2d9d9ca01600"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U",
+          "mode": "list",
+          "cachedResultName": " 30_Veo3",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 345862786,
+          "mode": "list",
+          "cachedResultName": "Video",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U/edit#gid=345862786"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        400,
+        160
+      ],
+      "id": "19eed531-0512-43bf-9a6e-70d7904fd5ed",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Ac91EFYN3SiuFuHK",
+          "name": "Google Sheets account 7"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U",
+          "mode": "list",
+          "cachedResultName": " 30_Veo3",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 345862786,
+          "mode": "list",
+          "cachedResultName": "Video",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U/edit#gid=345862786"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $json.row_number }}",
+            "Status": "Pro"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "Type",
+              "displayName": "Type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Prompts",
+              "displayName": "Prompts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Keywords",
+              "displayName": "Keywords",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Title",
+              "displayName": "Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image1",
+              "displayName": "Image1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Hastag",
+              "displayName": "Hastag",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Image2",
+              "displayName": "Image2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image3",
+              "displayName": "Image3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image4",
+              "displayName": "Image4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1232,
+        144
+      ],
+      "id": "d30613c2-ffba-4d78-ae77-51875d669252",
+      "name": "Update Status",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Ac91EFYN3SiuFuHK",
+          "name": "Google Sheets account 7"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://{{ $json.API_ENDPOINT }}/v1/projects/{{ $json.PROJECT_ID }}/locations/{{ $json.LOCATION }}/publishers/google/models/{{ $json.MODEL_VERSION }}:predictLongRunning",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"endpoint\": \"projects/n8nveo3-479809/locations/us-central1/publishers/google/models/veo-3.1-generate-001\",\n  \"instances\": [\n    {\n      \"prompt\": \"{{ $json.TEXT_PROMPT }}\"\n    }\n  ],\n  \"parameters\": {\n    \"aspectRatio\": \"9:16\",\n    \"sampleCount\": 1,\n    \"durationSeconds\": \"8\",\n    \"personGeneration\": \"allow_all\",\n    \"addWatermark\": true,\n    \"includeRaiReason\": true,\n    \"generateAudio\": true\n  }\n}\n",
+        "options": {}
+      },
+      "id": "b68fe0c8-c98d-4852-9863-d8c6c75417a4",
+      "name": "Vertex AI-VEO",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1696,
+        160
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "amount": 1,
+        "unit": "minutes"
+      },
+      "id": "bf28d6b7-2b1b-4ddc-ae57-99c60c566501",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "position": [
+        1936,
+        160
+      ],
+      "typeVersion": 1.1,
+      "webhookId": "ca4136c0-182a-43e0-b234-079ffe826eea"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://{{ $('Setting').item.json.API_ENDPOINT }}/v1/projects/{{ $('Setting').item.json.PROJECT_ID }}/locations/{{ $('Setting').item.json.LOCATION }}/publishers/google/models/{{ $('Setting').item.json.MODEL_VERSION }}:fetchPredictOperation",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Setting').item.json.ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"operationName\": \"{{ $json.name }}\"\n}\n",
+        "options": {}
+      },
+      "id": "d0499429-c83d-4b63-80e9-4b927f1d5558",
+      "name": "Vertex AI-fetch",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        2144,
+        160
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "check-video-ready",
+              "leftValue": "={{ $json.response && $json.response.videos && $json.response.videos[0] && $json.response.videos[0].bytesBase64Encoded ? 'ready' : 'not_ready' }}",
+              "rightValue": "ready",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        2336,
+        160
+      ],
+      "id": "9da58625-a773-4acb-8d9d-314c2b47fb23",
+      "name": "Check Video Ready"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "response.videos[0].bytesBase64Encoded",
+        "options": {}
+      },
+      "id": "09bd3d9f-e18d-4bcb-a429-d52953f7f88e",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "position": [
+        2544,
+        160
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "name": "=video-{{ $now.toFormat('yyyy-MM-dd-HHmmss') }}.mp4",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1iY_yx1D_Y2STKtDMusZ--2sqqlur3ya5",
+          "mode": "list",
+          "cachedResultName": "11. Video_Veo3",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1iY_yx1D_Y2STKtDMusZ--2sqqlur3ya5"
+        },
+        "options": {}
+      },
+      "id": "20304ade-04df-4a7c-9d99-71886fc8b68b",
+      "name": "Upload file",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        3008,
+        160
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "e2osjsVHgsECOqGE",
+          "name": "Google Drive account 4"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U",
+          "mode": "list",
+          "cachedResultName": " 30_Veo3",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 345862786,
+          "mode": "list",
+          "cachedResultName": "Video",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Y6oLc70XX1BWW4hSh35UdFEL-ByrZ1dZMulzoYtBcYI/edit#gid=345862786"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $('Update Status').item.json.row_number }}",
+            "Status": "Success",
+            "video_name": "={{ $json.name }}"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "Type",
+              "displayName": "Type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Prompts",
+              "displayName": "Prompts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Keywords",
+              "displayName": "Keywords",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Title",
+              "displayName": "Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image1",
+              "displayName": "Image1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Hastag",
+              "displayName": "Hastag",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Image2",
+              "displayName": "Image2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image3",
+              "displayName": "Image3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image4",
+              "displayName": "Image4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status Facebook",
+              "displayName": "Status Facebook",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status Youtube",
+              "displayName": "Status Youtube",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status Tiktok",
+              "displayName": "Status Tiktok",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "video_name",
+              "displayName": "video_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "CategoryID",
+              "displayName": "CategoryID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Link Youtube",
+              "displayName": "Link Youtube",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Link Tiktok",
+              "displayName": "Link Tiktok",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        3408,
+        160
+      ],
+      "id": "7aadd5b6-99ad-4c6a-9928-02a95f78ff6f",
+      "name": "Update Status to Success",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Ac91EFYN3SiuFuHK",
+          "name": "Google Sheets account 7"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5cedc3de-6221-4d7e-a6c8-82f4cb9cf0e9",
+              "name": "PROJECT_ID",
+              "type": "string",
+              "value": "prn8n-457809"
+            },
+            {
+              "id": "90019751-e2d5-4764-9bf9-e13916dcc528",
+              "name": "MODEL_VERSION",
+              "type": "string",
+              "value": "veo-3.1-generate-001"
+            },
+            {
+              "id": "67ab205c-82b3-4263-99c4-c906a0ca6ae9",
+              "name": "LOCATION",
+              "type": "string",
+              "value": "us-central1"
+            },
+            {
+              "id": "413415fb-60c5-4d0d-ac45-1e6178a55227",
+              "name": "TEXT_PROMPT",
+              "type": "string",
+              "value": "={{ $('Get row(s) in sheet').item.json.Title }}"
+            },
+            {
+              "id": "bf0910e1-b757-4852-9341-a7792161f89b",
+              "name": "ACCESS_TOKEN",
+              "type": "string",
+              "value": "ya29.a0Aa7pCA8BgQZag32hpvy0luf9jVrzv6Ip6nxS55lR-5hyjRbbnhOMiYxAMA3PLWJpxDbBiqo70jUT1dzJq-WBc5Or3altidzZfeYOS7miyWYyomcNwRrJEWbQZkQb_z5fXe2HKGZ8SiQ1bvwrGgioJ0DnERtNo1sluDO7FzBidpqEnnMk72EZpw70XtNhtRcFphz6fbzKtnprFptr5WHhYVtg_q5KC406YJqzaFgkHW_7Sa_2-VhZc6VnZ67c0eRlT6AjSgZtshyVG3sGY3_4tneIiNJ9aI30iXFpXN3eSwifQk1t8CqaeNBT1NIPM8gdC7-8ocu1raY5XVT7N2Mi67M5knsQe4-SfF0SMKEaCgYKAX0SARASFQHGX2Mi4NuL2elVywPi5V0P44xxGA0366"
+            },
+            {
+              "id": "17954335-b96b-4813-9c4a-20817d675448",
+              "name": "API_ENDPOINT",
+              "type": "string",
+              "value": "us-central1-aiplatform.googleapis.com"
+            },
+            {
+              "id": "row-data",
+              "name": "ROW_DATA",
+              "type": "object",
+              "value": "={{ $json }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4cfc190e-e229-4daf-9273-3c4959a57a76",
+      "name": "Setting",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1472,
+        160
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        112,
+        1040
+      ],
+      "id": "73c49e1a-7a26-4eef-82d9-e1d900f61fce",
+      "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $('Get Video List').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1536,
+        1024
+      ],
+      "id": "df867a78-318d-47f9-8071-094b4e2c9ae8",
+      "name": "Download Video",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "e2osjsVHgsECOqGE",
+          "name": "Google Drive account 4"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('Limit1').item.json.video_name }}.mp4",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "1iY_yx1D_Y2STKtDMusZ--2sqqlur3ya5",
+            "mode": "list",
+            "cachedResultName": "11. Video_Veo3",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1iY_yx1D_Y2STKtDMusZ--2sqqlur3ya5"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1232,
+        1024
+      ],
+      "id": "e3913ab7-d449-4c68-89ea-a7f3eb5f3d3c",
+      "name": "Get Video List",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "e2osjsVHgsECOqGE",
+          "name": "Google Drive account 4"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U",
+          "mode": "list",
+          "cachedResultName": " 30_Veo3",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 345862786,
+          "mode": "list",
+          "cachedResultName": "Video",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U/edit#gid=345862786"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        368,
+        1040
+      ],
+      "id": "e172bdc4-c9af-452d-9be4-8a13750c09e0",
+      "name": "Lấy Trạng Thái Trong File Google Sheet",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Ac91EFYN3SiuFuHK",
+          "name": "Google Sheets account 7"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U",
+          "mode": "list",
+          "cachedResultName": " 30_Veo3",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 345862786,
+          "mode": "list",
+          "cachedResultName": "Video",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Y6oLc70XX1BWW4hSh35UdFEL-ByrZ1dZMulzoYtBcYI/edit#gid=345862786"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $json.row_number }}",
+            "Status Facebook": "Pro"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "Type",
+              "displayName": "Type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Prompts",
+              "displayName": "Prompts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Keywords",
+              "displayName": "Keywords",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Title",
+              "displayName": "Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image1",
+              "displayName": "Image1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Hastag",
+              "displayName": "Hastag",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image2",
+              "displayName": "Image2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image3",
+              "displayName": "Image3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image4",
+              "displayName": "Image4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status Facebook",
+              "displayName": "Status Facebook",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status Youtube",
+              "displayName": "Status Youtube",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status Tiktok",
+              "displayName": "Status Tiktok",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "video_name",
+              "displayName": "video_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "CategoryID",
+              "displayName": "CategoryID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Link Youtube",
+              "displayName": "Link Youtube",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Link Tiktok",
+              "displayName": "Link Tiktok",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        976,
+        1024
+      ],
+      "id": "4b874cf8-111a-4308-8cbb-01cde8adf956",
+      "name": "Cập Nhật Trạng Thái Trong Google Sheet",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Ac91EFYN3SiuFuHK",
+          "name": "Google Sheets account 7"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "495919ca-ed10-4237-bd79-c42098b08fea",
+              "leftValue": "={{ $json['Status Facebook'] }}",
+              "rightValue": "Run",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        592,
+        912
+      ],
+      "id": "d5ba44ff-af9c-4f8a-8560-265ab61dc48c",
+      "name": "Kiểm tra trạng thái của Video"
+    },
+    {
+      "parameters": {
+        "httpRequestMethod": "POST",
+        "graphApiVersion": "v23.0",
+        "node": "me",
+        "edge": "video_reels",
+        "options": {
+          "queryParameters": {
+            "parameter": [
+              {
+                "name": "upload_phase",
+                "value": "start"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "typeVersion": 1,
+      "position": [
+        2528,
+        864
+      ],
+      "id": "e685d6c7-07cd-439b-9422-ce6e48c29319",
+      "name": "Upload Session",
+      "credentials": {
+        "facebookGraphApi": {
+          "id": "WxdPxh6Up5iL9Iqk",
+          "name": "Facebook Graph account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U",
+          "mode": "list",
+          "cachedResultName": " 30_Veo3",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 345862786,
+          "mode": "list",
+          "cachedResultName": "Video",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U/edit#gid=345862786"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $('Cập Nhật Trạng Thái Trong Google Sheet').item.json.row_number }}",
+            "Status Facebook": "Success"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "Type",
+              "displayName": "Type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Prompts",
+              "displayName": "Prompts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Keywords",
+              "displayName": "Keywords",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Title",
+              "displayName": "Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image1",
+              "displayName": "Image1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Hastag",
+              "displayName": "Hastag",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image2",
+              "displayName": "Image2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image3",
+              "displayName": "Image3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image4",
+              "displayName": "Image4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status Facebook",
+              "displayName": "Status Facebook",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status Youtube",
+              "displayName": "Status Youtube",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status Tiktok",
+              "displayName": "Status Tiktok",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "video_name",
+              "displayName": "video_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "CategoryID",
+              "displayName": "CategoryID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Link Youtube",
+              "displayName": "Link Youtube",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Link Tiktok",
+              "displayName": "Link Tiktok",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        4064,
+        976
+      ],
+      "id": "ae8ef263-2032-4ce0-b486-c4a5f6ca8707",
+      "name": "Cập Nhật Trạng Thái Tải Video Thành Công Trong Google Sheet",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Ac91EFYN3SiuFuHK",
+          "name": "Google Sheets account 7"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        3216,
+        992
+      ],
+      "id": "8256f2e3-a3f8-4198-8c0a-633f71e852c1",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.upload_url }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "facebookGraphApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "offset",
+              "value": "0"
+            },
+            {
+              "name": "file_size",
+              "value": "={{ $('Code in JavaScript').item.json.contentLength }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3504,
+        992
+      ],
+      "id": "dff3c4f8-2c2c-4852-9b2c-82a38d6d727b",
+      "name": "Upload Local (Theo tài liệu Facebook)",
+      "credentials": {
+        "facebookGraphApi": {
+          "id": "WxdPxh6Up5iL9Iqk",
+          "name": "Facebook Graph account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpRequestMethod": "POST",
+        "graphApiVersion": "v23.0",
+        "node": "me",
+        "edge": "video_reels",
+        "options": {
+          "queryParameters": {
+            "parameter": [
+              {
+                "name": "video_id",
+                "value": "={{ $('Upload Session').item.json.video_id }}"
+              },
+              {
+                "name": "upload_phase",
+                "value": "finish"
+              },
+              {
+                "name": "video_state",
+                "value": "PUBLISHED"
+              },
+              {
+                "name": "description",
+                "value": "={{ '🎬 ' + $('Lấy Trạng Thái Trong File Google Sheet').item.json.Title + '\\n\\n✨ ' + $('Lấy Trạng Thái Trong File Google Sheet').item.json.Description }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "typeVersion": 1,
+      "position": [
+        3712,
+        992
+      ],
+      "id": "76a9fc8c-9e77-4282-ba13-775ccd0d31f3",
+      "name": "Facebook Graph API",
+      "credentials": {
+        "facebookGraphApi": {
+          "id": "WxdPxh6Up5iL9Iqk",
+          "name": "Facebook Graph account 2"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        944,
+        144
+      ],
+      "id": "c7b2556e-239a-421c-9f80-6d65ff0bd9ce",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8,
+              "triggerAtMinute": 15
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        96,
+        1792
+      ],
+      "id": "23bb67bd-f9cd-4e59-a6b0-1c469bb94981",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "495919ca-ed10-4237-bd79-c42098b08fea",
+              "leftValue": "={{ $json['Status Youtube'] }}",
+              "rightValue": "Run",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        656,
+        1792
+      ],
+      "id": "d40ea255-af77-4220-84b7-be115680e954",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "operation": "upload",
+        "title": "={{ $('Limit2').item.json.Title }}",
+        "regionCode": "VN",
+        "categoryId": "={{ $('Limit2').item.json.CategoryID }}",
+        "options": {
+          "defaultLanguage": "vi",
+          "description": "={{ $('Limit2').item.json.Description }}",
+          "embeddable": false,
+          "privacyStatus": "private"
+        }
+      },
+      "type": "n8n-nodes-base.youTube",
+      "typeVersion": 1,
+      "position": [
+        1984,
+        1760
+      ],
+      "id": "d8c28cfe-2bae-483d-bdf1-a868d26151b4",
+      "name": "YouTube"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U",
+          "mode": "list",
+          "cachedResultName": " 30_Veo3",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 345862786,
+          "mode": "list",
+          "cachedResultName": "Video",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Y6oLc70XX1BWW4hSh35UdFEL-ByrZ1dZMulzoYtBcYI/edit#gid=345862786"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $json.row_number }}",
+            "Status Youtube": "Pro"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "Type",
+              "displayName": "Type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Prompts",
+              "displayName": "Prompts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Keywords",
+              "displayName": "Keywords",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Title",
+              "displayName": "Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image1",
+              "displayName": "Image1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Hastag",
+              "displayName": "Hastag",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image2",
+              "displayName": "Image2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image3",
+              "displayName": "Image3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image4",
+              "displayName": "Image4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status Facebook",
+              "displayName": "Status Facebook",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status Youtube",
+              "displayName": "Status Youtube",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status Tiktok",
+              "displayName": "Status Tiktok",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "video_name",
+              "displayName": "video_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        1136,
+        1792
+      ],
+      "id": "fcadc2c7-d470-4336-91a9-eedd854bfbde",
+      "name": "Lấy Trạng Thái Trong File Google Sheet1",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Ac91EFYN3SiuFuHK",
+          "name": "Google Sheets account 7"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1744,
+        1760
+      ],
+      "id": "4ef126ed-129e-4fb9-ad24-c029cdcf4a87",
+      "name": "Download Video1",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "e2osjsVHgsECOqGE",
+          "name": "Google Drive account 4"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('Limit2').item.json.video_name }}",
+        "returnAll": true,
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "1iY_yx1D_Y2STKtDMusZ--2sqqlur3ya5",
+            "mode": "list",
+            "cachedResultName": "11. Video_Veo3",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1iY_yx1D_Y2STKtDMusZ--2sqqlur3ya5"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1456,
+        1760
+      ],
+      "id": "96a50f90-9ed7-4709-9633-d0c4369b930f",
+      "name": "Get Video List1",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "e2osjsVHgsECOqGE",
+          "name": "Google Drive account 4"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U",
+          "mode": "list",
+          "cachedResultName": " 30_Veo3",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 345862786,
+          "mode": "list",
+          "cachedResultName": "Video",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U/edit#gid=345862786"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        384,
+        1792
+      ],
+      "id": "3a16c42c-dd03-43fb-a4f5-7a29bbc75646",
+      "name": "Lấy Trạng Thái Trong File Google Sheet2",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Ac91EFYN3SiuFuHK",
+          "name": "Google Sheets account 7"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U",
+          "mode": "list",
+          "cachedResultName": " 30_Veo3",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 345862786,
+          "mode": "list",
+          "cachedResultName": "Video",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1F3YuPpJTHa_Pkkh4Dix9eq7HH614hvfVDcKcT7paA0U/edit#gid=345862786"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $('Limit2').item.json.row_number }}",
+            "Status Youtube": "Success",
+            "Link Youtube": "=https://www.youtube.com/watch?v={{ $json.uploadId }}"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "Type",
+              "displayName": "Type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Prompts",
+              "displayName": "Prompts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Keywords",
+              "displayName": "Keywords",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Title",
+              "displayName": "Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image1",
+              "displayName": "Image1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Hastag",
+              "displayName": "Hastag",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image2",
+              "displayName": "Image2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image3",
+              "displayName": "Image3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image4",
+              "displayName": "Image4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status Facebook",
+              "displayName": "Status Facebook",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status Youtube",
+              "displayName": "Status Youtube",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status Tiktok",
+              "displayName": "Status Tiktok",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "video_name",
+              "displayName": "video_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "CategoryID",
+              "displayName": "CategoryID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Link Youtube",
+              "displayName": "Link Youtube",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Link Tiktok",
+              "displayName": "Link Tiktok",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        2336,
+        1760
+      ],
+      "id": "206c9828-605b-47db-8fe2-5a1d85510e49",
+      "name": "Cập Nhật Trạng Thái Tải Video Thành Công Trong Google Sheet1",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Ac91EFYN3SiuFuHK",
+          "name": "Google Sheets account 7"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        768,
+        1024
+      ],
+      "id": "90c81e50-a53d-46ff-bcfe-a7d18898cfcb",
+      "name": "Limit1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const binaryBuffer = await this.helpers.getBinaryDataBuffer(0, 'data');\n\nreturn [{\n  json: {\n    contentLength: binaryBuffer.length // Sẽ ra đúng 4,943,394\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1888,
+        848
+      ],
+      "id": "029902df-845e-4150-9add-6d1665400d58",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        928,
+        1792
+      ],
+      "id": "1e4f78f8-2ff9-4a7a-81da-0bd954344e57",
+      "name": "Limit2"
+    },
+    {
+      "parameters": {
+        "content": "Cách tạo Video ",
+        "height": 592,
+        "width": 3776
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "8434b4aa-9465-43e0-872f-99821ab9ce88",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "Post bài lên Facebook\n",
+        "height": 768,
+        "width": 4704,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        704
+      ],
+      "id": "0e70105d-6fc9-4aae-9a63-68e151043e2f",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "Post bài lên Youtube\n",
+        "height": 528,
+        "width": 3232,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        1632
+      ],
+      "id": "72f482a5-ddce-45cd-b2cd-b4d9fa4694d2",
+      "name": "Sticky Note2"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Daily 8AM": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check If Video Ready": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Check If Video Ready",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vertex AI-VEO": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Status": {
+      "main": [
+        [
+          {
+            "node": "Setting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Vertex AI-fetch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vertex AI-fetch": {
+      "main": [
+        [
+          {
+            "node": "Check Video Ready",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Video Ready": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Upload file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file": {
+      "main": [
+        [
+          {
+            "node": "Update Status to Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Setting": {
+      "main": [
+        [
+          {
+            "node": "Vertex AI-VEO",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Lấy Trạng Thái Trong File Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Video": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Video List": {
+      "main": [
+        [
+          {
+            "node": "Download Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lấy Trạng Thái Trong File Google Sheet": {
+      "main": [
+        [
+          {
+            "node": "Kiểm tra trạng thái của Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cập Nhật Trạng Thái Trong Google Sheet": {
+      "main": [
+        [
+          {
+            "node": "Get Video List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kiểm tra trạng thái của Video": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Session": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Upload Local (Theo tài liệu Facebook)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Local (Theo tài liệu Facebook)": {
+      "main": [
+        [
+          {
+            "node": "Facebook Graph API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Facebook Graph API": {
+      "main": [
+        [
+          {
+            "node": "Cập Nhật Trạng Thái Tải Video Thành Công Trong Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Update Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Lấy Trạng Thái Trong File Google Sheet2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Limit2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "YouTube": {
+      "main": [
+        [
+          {
+            "node": "Cập Nhật Trạng Thái Tải Video Thành Công Trong Google Sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lấy Trạng Thái Trong File Google Sheet1": {
+      "main": [
+        [
+          {
+            "node": "Get Video List1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Video1": {
+      "main": [
+        [
+          {
+            "node": "YouTube",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Video List1": {
+      "main": [
+        [
+          {
+            "node": "Download Video1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lấy Trạng Thái Trong File Google Sheet2": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Cập Nhật Trạng Thái Trong Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Upload Session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit2": {
+      "main": [
+        [
+          {
+            "node": "Lấy Trạng Thái Trong File Google Sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "f52dcb49-7ec0-47a6-aac7-4e4d98674ebf",
+  "meta": {
+    "instanceId": "8ae9064574590f4bef62fe6c8cafaae52a5a90dd40cb184103af1049753a2d5d"
+  },
+  "id": "f9H9aWyT50KDIIma",
+  "tags": []
+}
